@@ -39,6 +39,7 @@ class AdaptiveKLController:
     def update(self, current, n_steps):
         target = self.target
         proportional_error = np.clip(current / target - 1, -0.2, 0.2)
+        # TODO(lxuechen): this does not match original paper.
         mult = 1 + proportional_error * n_steps / self.horizon
         self.value *= mult
 
